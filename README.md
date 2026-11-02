@@ -15,6 +15,10 @@ while you are looking at the page.
 Nothing is uploaded. The built-in sounds are generated in your browser, and a
 custom file stays in this browser's storage.
 
+<p align="center">
+  <img src="screenshot.png" width="355" alt="The Audio settings panel: the sound switch, volume at 100%, four built-in sounds, a custom sound area, a preview button, and the background-only switch.">
+</p>
+
 ## What you can do
 
 - **Hear an answer land.** A chime plays the moment a Session that was working
