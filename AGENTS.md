@@ -54,15 +54,52 @@ test/client.test.mjs
     the same exponential envelopes the synth schedules; do not replace it with a
     fixed per-note gain without rechecking the peaks.
 
-## Loop
+## Development loop
+
+1. **Edit.** Make the smallest change that completes the task; keep unrelated
+   cleanup out of it.
+2. **Verify.** Run `npm test` — the whole suite takes about a tenth of a second,
+   and there is no build or typecheck step. Run `git diff --check` before
+   committing.
+3. **Try it.** Edit `client.js` and refresh the page. Edit `index.js` or
+   `cordis.patch.yml` and restart the Harness. A freshly installed bundle
+   activates over HMR, but a replaced package needs a page reload to load a new
+   module generation.
+4. **Commit.** As soon as the task is done and the suite is green, commit without
+   being asked. One task, one commit.
+5. **Report.** Give the short SHA and subject, and say it has not been pushed.
+6. **Stop.** Do not push until the human explicitly says so.
+
+Settings and a custom clip are per browser: changing them in one browser does
+not carry to another, and clearing the site's data removes them.
+
+## Git contract
+
+> **Commit after a task is done. Push only when explicitly asked.**
+
+| Action | Who | When |
+| --- | --- | --- |
+| `git commit` | **the agent, unprompted** | as soon as a task is complete and verified |
+| `git push` | **only when the human explicitly says so** | on an unambiguous instruction such as "push", "push it", "push that" or "push to GitHub" |
+
+- **Never push on your own initiative.** A green suite, a clean diff or a
+  finished task are not permission. A previous push does not authorise the next
+  one. `commit ≠ push`.
+- **One task, one commit.** Keep unrelated fixes out; an unrelated fix gets its
+  own commit. The subject is an imperative, capitalised sentence with no type
+  prefix and no trailing period — `Add the audio settings panel`, not
+  `feat(panel): ...`. Add a body explaining why for anything non-obvious.
+- **Never rewrite published history.** No force-push, no amending or rebasing
+  commits already on `origin/main`, and no `reset --hard` against published
+  commits.
+- **Never commit secrets, `node_modules/`, logs, or `.DS_Store`.**
+- **A question or analysis with no file changes needs no commit.** A red suite
+  does not get committed; report the failure instead.
+- **Before a push**, re-run `npm test` and confirm `git status --short` is clean.
+  This repo has no CI or deploy on push; the push is just GitHub.
+- The remote is `origin` → <https://github.com/DevTarlow/dsh-response-chime.git>;
+  the working branch is `main`.
 
 ```sh
-node test/client.test.mjs
+npm test
 ```
-
-`npm test` runs the same file. Edit `client.js` and refresh the page. Edit
-`index.js` or `cordis.patch.yml` and restart the Harness. A freshly installed
-bundle activates over HMR, but a replaced package needs a page reload to load a
-new module generation. Settings and a custom clip are per browser: changing them
-in one browser does not carry to another, and clearing the site's data removes
-them.
