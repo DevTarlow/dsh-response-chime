@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Response chime",
+    "description": "Plays a two-note chime when an agent finishes answering, with a switch in the left sidebar to turn it off."
+  }
+}
