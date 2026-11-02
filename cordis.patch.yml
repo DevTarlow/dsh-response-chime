@@ -1,8 +1,9 @@
 # Response Chime — bundle layer.
 #
-# One row and no configuration: the switch stores its own state in the browser,
-# so there is nothing a profile patch would want to override. The row id is the
-# plugin's name so the Loader and the package resolve to the same copy.
+# One row and no configuration: the settings panel stores its own state in the
+# browser, and a custom clip's bytes stay in the browser's IndexedDB. There is
+# nothing a profile patch would want to override. The row id is the plugin's
+# name so the Loader and the package resolve to the same copy.
 - insert:
     - id: response-chime
       name: dsh-response-chime

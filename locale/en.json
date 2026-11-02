@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "Response chime",
-    "description": "Plays a two-note chime when an agent finishes answering, with a switch in the left sidebar to turn it off."
+    "description": "Plays a chime when an agent finishes answering, with an audio settings panel for volume, built-in and custom sounds, and quiet-while-watching."
   }
 }
